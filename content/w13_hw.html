@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='w11_hw.html'>w11_hw</a><li><a href='w10.html'>w10</a><li><a href='w7.html'>w7</a><li><a href='w12_hw.html'>w12_hw</a><li><a href='W13_hw.html'>W13_hw</a></li></li></ul></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='HW 2 Exam.html'>HW 2 Exam</a></li></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li><a href='HW 3 Exam.html'>HW 3 Exam</a></li></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Attendance.html'>Attendance</a><li class='has-children'><a href='HW 1.html'>HW 1</a><ul class='dropdown'><li class='has-children'><a href='HW 1 Exam.html'>HW 1 Exam</a><ul class='dropdown'><li><a href='w11_hw.html'>w11_hw</a><li><a href='w10.html'>w10</a><li><a href='w7.html'>w7</a><li><a href='w12_hw.html'>w12_hw</a><li><a href='w13_hw.html'>w13_hw</a></li></li></ul></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='HW 2 Exam.html'>HW 2 Exam</a></li></ul><li class='has-children'><a href='HW 3.html'>HW 3</a><ul class='dropdown'><li><a href='HW 3 Exam.html'>HW 3 Exam</a></li></ul><li class='has-children'><a href='HW 4.html'>HW 4</a><ul class='dropdown'><li><a href='HW 4 Exam.html'>HW 4 Exam</a></li></ul><li><a href='Final Report.html'>Final Report</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,39 +141,41 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w12_hw << <a href='w12_hw.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2<br /><h1>W13_hw</h1>
-<p>&lt;!==導入brython程式庫--&gt;</p>
-<p>
+    <div id="tipue_search_content">w12_hw << <a href='w12_hw.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2<br /><h1>w13_hw</h1>
+<p></p>
+<p>Brython 圖形繪製</p>
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
-</p>
-<pre class="brush:py;auto-links:false" contentedditable="faise"><!--啟動Brython
---></pre>
-<p>
+<!-- 用來顯示畫布的 div -->
+<div id="brython_div1"></div>
 <script>
-//<!CDATA[
-window.onload=function(){
-brython({debug:1,pytonpath:['static/','/../download/py/']});
-}
+    // 初始化 Brython，並指定 Python 腳本的路徑
+    window.onload = function() {
+        brython({debug: 1, pythonpath: ['static/', '/../download/py/']});
+    }
 </script>
-<script type="txet/python">
-from browser import html
-from browser importdocument as doc
-#利用html建立canvas超文件物件
-canvas = htmlCANVAS(width=400,height=400)
-brython_div = doc["brython_div1"]
-brython_div<=canvas
-ctx=canvas.getContext("2d")
+<script type="text/python">
+    from browser import html
+    from browser import document as doc
 
-ctx.lineWidth = 1
+    # 創建 canvas 元素並加入頁面
+    canvas = html.CANVAS(width=400, height=400)
+    brython_div = doc["brython_div1"]
+    brython_div <= canvas
 
-ctx.strokeStyle = 'blue'
-ctx.beginPath()
-ctx.moveTo(10,10)
-ctx.lineTo(100,100)
-ctx.stroke()
-</script>
-</p><br />w12_hw << <a href='w12_hw.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2</div>
+    # 獲取 canvas 上下文
+    ctx = canvas.getContext("2d")
+
+    # 設置線條寬度和顏色
+    ctx.lineWidth = 1
+    ctx.strokeStyle = 'blue'
+
+    # 繪製線段
+    ctx.beginPath()
+    ctx.moveTo(10, 10)
+    ctx.lineTo(100, 100)
+    ctx.stroke()
+</script><br />w12_hw << <a href='w12_hw.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2</div>
         
     <!-- footer -->
       <div class="container">

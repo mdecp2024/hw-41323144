@@ -63,39 +63,41 @@
 <p><a href="https://gist.githubusercontent.com/41323144/009827390e105c5236d876bc413f0c2f/raw/89ee4696d8013fee22bbda96145a3c3852167a48/w1">for和print迴圈</a></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/LYvkElTpIDE" width="560"></iframe></p>
 <p></p>
-<h3>W13_hw</h3>
-<p>&lt;!==導入brython程式庫--&gt;</p>
-<p>
+<h3>w13_hw</h3>
+<p></p>
+<p>Brython 圖形繪製</p>
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
-</p>
-<pre class="brush:py;auto-links:false" contentedditable="faise"><!--啟動Brython
---></pre>
-<p>
+<!-- 用來顯示畫布的 div -->
+<div id="brython_div1"></div>
 <script>
-//<!CDATA[
-window.onload=function(){
-brython({debug:1,pytonpath:['static/','/../download/py/']});
-}
+    // 初始化 Brython，並指定 Python 腳本的路徑
+    window.onload = function() {
+        brython({debug: 1, pythonpath: ['static/', '/../download/py/']});
+    }
 </script>
-<script type="txet/python">
-from browser import html
-from browser importdocument as doc
-#利用html建立canvas超文件物件
-canvas = htmlCANVAS(width=400,height=400)
-brython_div = doc["brython_div1"]
-brython_div<=canvas
-ctx=canvas.getContext("2d")
+<script type="text/python">
+    from browser import html
+    from browser import document as doc
 
-ctx.lineWidth = 1
+    # 創建 canvas 元素並加入頁面
+    canvas = html.CANVAS(width=400, height=400)
+    brython_div = doc["brython_div1"]
+    brython_div <= canvas
 
-ctx.strokeStyle = 'blue'
-ctx.beginPath()
-ctx.moveTo(10,10)
-ctx.lineTo(100,100)
-ctx.stroke()
-</script>
-</p><h1>HW2</h1>
+    # 獲取 canvas 上下文
+    ctx = canvas.getContext("2d")
+
+    # 設置線條寬度和顏色
+    ctx.lineWidth = 1
+    ctx.strokeStyle = 'blue'
+
+    # 繪製線段
+    ctx.beginPath()
+    ctx.moveTo(10, 10)
+    ctx.lineTo(100, 100)
+    ctx.stroke()
+</script><h1>HW2</h1>
 <h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
