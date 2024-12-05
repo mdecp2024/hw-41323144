@@ -50,7 +50,8 @@
 <p><a href="https://gist.githubusercontent.com/41323144/ef9b822ae0289ae321d3af09ada9cdad/raw/740b04a0319ccb4227fee9a3462d2d7b66cc8e0c/w1">黑色方塊圓圈</a></p>
 <p><a href="https://mde.tw/cp2024/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/5705fc2a67aa1db0c0d44d6d0478b08b/raw/f95909804a1f134963cade8463eeb9bd32129ea8/grid_line_and_fill_in_Brython.py">網頁上的方格與塗色</a></p>
 <p>3. 完成上列題目後, 請利用 Youtube 影片<span>簡報</span>個人的解題過程與心得.</p>
-<p>利用CHATGPT讓我們聊解程式之多變性與其廣泛的應用</p><h3>w10</h3>
+<p>利用CHATGPT讓我們聊解程式之多變性與其廣泛的應用</p>
+<h3>w10</h3>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/vZtwhtCmj4o" width="560"></iframe><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/evblUcrUr4Q" width="560"></iframe><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/jlTZNUlgac8" width="560"></iframe></p>
 <h3>w7</h3>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/8HiMfIXXSO8" width="560"></iframe></p>
@@ -61,7 +62,40 @@
 <p><a href="https://gist.githubusercontent.com/41323144/009827390e105c5236d876bc413f0c2f/raw/89ee4696d8013fee22bbda96145a3c3852167a48/w1"></a></p>
 <p><a href="https://gist.githubusercontent.com/41323144/009827390e105c5236d876bc413f0c2f/raw/89ee4696d8013fee22bbda96145a3c3852167a48/w1">for和print迴圈</a></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/LYvkElTpIDE" width="560"></iframe></p>
-<p></p><h1>HW2</h1>
+<p></p>
+<h3>W13_hw</h3>
+<p>&lt;!==導入brython程式庫--&gt;</p>
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<pre class="brush:py;auto-links:false" contentedditable="faise"><!--啟動Brython
+--></pre>
+<p>
+<script>
+//<!CDATA[
+window.onload=function(){
+brython({debug:1,pytonpath:['static/','/../download/py/']});
+}
+</script>
+<script type="txet/python">
+from browser import html
+from browser importdocument as doc
+#利用html建立canvas超文件物件
+canvas = htmlCANVAS(width=400,height=400)
+brython_div = doc["brython_div1"]
+brython_div<=canvas
+ctx=canvas.getContext("2d")
+
+ctx.lineWidth = 1
+
+ctx.strokeStyle = 'blue'
+ctx.beginPath()
+ctx.moveTo(10,10)
+ctx.lineTo(100,100)
+ctx.stroke()
+</script>
+</p><h1>HW2</h1>
 <h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
