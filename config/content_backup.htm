@@ -64,42 +64,39 @@
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/LYvkElTpIDE" width="560"></iframe></p>
 <p></p>
 <h3>w13_hw</h3>
-<p><!-- 導入brython程式庫 --></p>
-<!-- 引入 Brython 庫 -->
-<script src="/static/brython.js"></script>
-<script src="/static/brython_stdlib.js"></script>
-<pre class="brush:py;auto-links:false" contenteditable="false"><!-- 啟動Brython -->
-</pre>
-<p>
-<script>
-    // 初始化 Brython
-    window.onload = function() {
-        brython({debug:1, pythonpath:['static/', '/../download/py/']});
-    }
-</script>
+<p></p>
+<p>Brython 繪圖範例</p>
+<!-- 引入 Brython -->
+<script src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython.min.js"></script>
+<!-- 顯示畫布的 div -->
+<div id="brython_div1"></div>
 <script type="text/python">
     from browser import html
     from browser import document as doc
-    
-    # 利用 HTML 建立 canvas 元素
+
+    # 創建畫布並將其加入到 div 中
     canvas = html.CANVAS(width=400, height=400)
     brython_div = doc["brython_div1"]
     brython_div <= canvas
 
-    # 獲取 canvas 上下文
+    # 獲取畫布的 2D 上下文
     ctx = canvas.getContext("2d")
-
-    # 設置線條寬度和顏色
     ctx.lineWidth = 1
-    ctx.strokeStyle = 'blue'
 
-    # 繪製線段
-    ctx.beginPath()
-    ctx.moveTo(10, 10)
-    ctx.lineTo(100, 100)
+    # 繪製兩個矩形，顏色為紅色
+    ctx.strokeStyle = 'red'
+    ctx.beginPath() 
+    ctx.rect(10, 10, 200, 200)
+    ctx.rect(110, 110, 200, 200)
     ctx.stroke()
-</script>
-</p><h1>HW2</h1>
+
+    # 繪製一條藍色對角線
+    ctx.strokeStyle = 'blue'
+    ctx.beginPath() 
+    ctx.moveTo(10, 10)
+    ctx.lineTo(210, 210)
+    ctx.stroke()
+</script><h1>HW2</h1>
 <h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>
 <p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
