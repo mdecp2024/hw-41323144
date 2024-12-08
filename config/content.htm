@@ -64,39 +64,53 @@
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/LYvkElTpIDE" width="560"></iframe></p>
 <p></p>
 <h3>w13_hw</h3>
-<p></p>
-<p>Brython 圖形繪製</p>
+<!-- 引入 Brython 程式庫 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
-<!-- 用來顯示畫布的 div -->
-<div id="brython_div1"></div>
+<!-- 啟動 Brython -->
 <script>
-    // 初始化 Brython，並指定 Python 腳本的路徑
-    window.onload = function() {
-        brython({debug: 1, pythonpath: ['static/', '/../download/py/']});
-    }
+window.onload = function() {
+    brython({debug:1, pythonpath:['/static/', '../../downloads/py/']});
+}
 </script>
+<!-- 設置容器 -->
+<div id="brython div1"></div>
+<!-- 利用 Brython 繪圖 -->
 <script type="text/python">
-    from browser import html
-    from browser import document as doc
+from browser import html
+from browser import document as doc
 
-    # 創建 canvas 元素並加入頁面
-    canvas = html.CANVAS(width=400, height=400)
-    brython_div = doc["brython_div1"]
-    brython_div <= canvas
+# 利用 HTML 建立 canvas 並定義特性
+canvas = html.CANVAS(width=600, height=600)
+brython_div = doc["brython div1"]
+brython_div <= canvas
+ctx = canvas.getContext("2d")
 
-    # 獲取 canvas 上下文
-    ctx = canvas.getContext("2d")
+ctx.strokeStyle = 'red'  # 設定矩形的邊框顏色為紅色
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200)  # 第一個正方形的左上角在(100, 100)，邊長200
+ctx.rect(200, 200, 200, 200)  # 第二個正方形的左上角在(200, 200)，邊長200
+ctx.stroke()
 
-    # 設置線條寬度和顏色
-    ctx.lineWidth = 1
-    ctx.strokeStyle = 'blue'
+# 2. 繪製對角線 (藍色) - 只連接第一個矩形的左上角和第一個矩形的右下角
+ctx.strokeStyle = 'blue'  # 設定對角線顏色為藍色
+ctx.beginPath()
+ctx.moveTo(100, 100)  # 起點為第一個矩形的左上角 (100, 100)
+ctx.lineTo(300, 300)  # 終點為第一個矩形的右下角 (300, 300)
+ctx.stroke()
 
-    # 繪製線段
-    ctx.beginPath()
-    ctx.moveTo(10, 10)
-    ctx.lineTo(100, 100)
-    ctx.stroke()
+# 3. 繪製兩個外切圓 (黑色)
+ctx.strokeStyle = 'black'  # 設定圓的顏色為黑色
+
+# 第一個矩形的外切圓
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14)  # 圓心在(200, 200)，半徑為141.4（sqrt(2) * 邊長的一半）
+ctx.stroke()
+
+# 第二個矩形的外切圓
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14)  # 圓心在(300, 300)，半徑為141.4
+ctx.stroke()
 </script><h1>HW2</h1>
 <h2>HW 2 Exam</h2>
 <p>每六人為一組進行協同程式練習</p>

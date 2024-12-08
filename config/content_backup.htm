@@ -65,36 +65,37 @@
 <p></p>
 <h3>w13_hw</h3>
 <p></p>
-<p>Brython 繪圖範例</p>
-<!-- 引入 Brython -->
-<script src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython.min.js"></script>
-<!-- 顯示畫布的 div -->
+<p>Brython 圖形繪製</p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 用來顯示畫布的 div -->
 <div id="brython_div1"></div>
+<script>
+    // 初始化 Brython，並指定 Python 腳本的路徑
+    window.onload = function() {
+        brython({debug: 1, pythonpath: ['static/', '/../download/py/']});
+    }
+</script>
 <script type="text/python">
     from browser import html
     from browser import document as doc
 
-    # 創建畫布並將其加入到 div 中
+    # 創建 canvas 元素並加入頁面
     canvas = html.CANVAS(width=400, height=400)
     brython_div = doc["brython_div1"]
     brython_div <= canvas
 
-    # 獲取畫布的 2D 上下文
+    # 獲取 canvas 上下文
     ctx = canvas.getContext("2d")
+
+    # 設置線條寬度和顏色
     ctx.lineWidth = 1
-
-    # 繪製兩個矩形，顏色為紅色
-    ctx.strokeStyle = 'red'
-    ctx.beginPath() 
-    ctx.rect(10, 10, 200, 200)
-    ctx.rect(110, 110, 200, 200)
-    ctx.stroke()
-
-    # 繪製一條藍色對角線
     ctx.strokeStyle = 'blue'
-    ctx.beginPath() 
+
+    # 繪製線段
+    ctx.beginPath()
     ctx.moveTo(10, 10)
-    ctx.lineTo(210, 210)
+    ctx.lineTo(100, 100)
     ctx.stroke()
 </script><h1>HW2</h1>
 <h2>HW 2 Exam</h2>
