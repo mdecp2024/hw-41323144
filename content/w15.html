@@ -2,7 +2,7 @@
         <head>
         <title>cp_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,10 +141,229 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">HW2 << <a href='HW2.html'>Previous</a> <a href='HW 3.html'>Next</a> >> HW 3<br /><h1>HW 2 Exam</h1>
-<p>每六人為一組進行協同程式練習</p>
-<p>透過 Jupyterlab 協同網頁, 輪流指定各組編寫 HW 2 相關的程式練習, 以及網頁內容 (localhost 與 Codespaces 環境)編輯.</p>
-<br />HW2 << <a href='HW2.html'>Previous</a> <a href='HW 3.html'>Next</a> >> HW 3</div>
+    <div id="tipue_search_content">W14_hw << <a href='W14_hw.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2<br /><h1>w15</h1>
+<p>題目1</p>
+<p><a href="https://mdecp2024.github.io/hw-41323144/content/Brython.html?src=https://gist.githubusercontent.com/41323144/01a43c886017e6f9d27c24257bfa321a/raw/abf127b35e6ccd75e34276edb797c989d9598f2d/hw1.py">從 1 累加到 100</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 變數 total_sum 初始為 0
+total_sum = 0
+
+def add_numbers(start, end):
+    total = 0  # 內部函式中局部變數 total，用來累加
+    # 使用 for 迴圈進行累加
+    for i in range(start, end + 1):
+        total += i  # 使用加法運算符進行累加
+
+    print(f"從 {start} 累加到 {end} 的結果是: {total}")
+    
+    return total  # 返回結果
+
+# 初始和結束的範圍
+start, end = 1, 100
+
+# 分別計算 1 到 50 和 51 到 100 的累加
+sum1_to_50 = add_numbers(start, 50)
+sum51_to_100 = add_numbers(51, end)
+
+# 計算總和並顯示結果
+total = sum1_to_50 + sum51_to_100
+print(f"從 {start} 累加到 {end} 的總和是: {total}")</pre>
+<p></p>
+<!-- 利用 Brython 繪圖 -->
+<script type="text/python">
+from browser import html
+from browser import document as doc
+
+# 利用 HTML 建立 canvas 並定義特性
+canvas = html.CANVAS(width=600, height=600)
+brython_div = doc["brython div1"]
+brython_div <= canvas
+ctx = canvas.getContext("2d")
+
+# 畫兩個矩形 (紅色邊框)
+ctx.strokeStyle = '#FF0000'  # Red
+ctx.beginPath()
+ctx.rect(100, 100, 200, 200)
+ctx.rect(200, 200, 200, 200)
+ctx.stroke()
+
+# 畫對角線 (藍色)
+ctx.strokeStyle = '#0000FF'  # Blue
+ctx.beginPath()
+ctx.moveTo(100, 100)
+ctx.lineTo(300, 300)
+ctx.stroke()
+
+# 畫兩個圓形 (黑色)
+ctx.strokeStyle = '#000000'  # Black
+ctx.beginPath()
+ctx.arc(200, 200, 141.4, 0, 2 * 3.14)
+ctx.stroke()
+ctx.beginPath()
+ctx.arc(300, 300, 141.4, 0, 2 * 3.14)
+ctx.stroke()
+
+# 判斷點的位置
+def point_in_circle1(x, y):
+    cx, cy, r = 200, 200, 141.4
+    return (x - cx) ** 2 + (y - cy) ** 2 < r ** 2
+
+def point_in_square1(x, y):
+    return 100 <= x <= 300 and 100 <= y <= 300
+
+def point_outside_square1(x, y):
+    return not point_in_square1(x, y)
+
+def point_in_circle2(x, y):
+    cx, cy, r = 300, 300, 141.4
+    return (x - cx) ** 2 + (y - cy) ** 2 < r ** 2
+
+def point_inside_square2(x, y):
+    return 200 <= x <= 400 and 200 <= y <= 400
+
+def point_on_line_segment(x, y):
+    return y == x and 100 <= x <= 300 and 100 <= y <= 300
+
+def point_above_line(x, y):
+    return y < x
+
+def point_below_line(x, y):
+    return y > x
+
+# 判斷點是否在正方形的上方、下方、左方、右方
+def point_above_square1(x, y):
+    return y < 100
+
+def point_below_square1(x, y):
+    return y > 300
+
+def point_left_of_square1(x, y):
+    return x < 100
+
+def point_right_of_square1(x, y):
+    return x > 300
+
+def point_above_square2(x, y):
+    return y < 200
+
+def point_below_square2(x, y):
+    return y > 400
+
+def point_left_of_square2(x, y):
+    return x < 200
+
+def point_right_of_square2(x, y):
+    return x > 400
+
+# 取得點所屬區域的函式
+def get_region(x, y):
+    regions = []
+    if point_in_circle1(x, y):
+        regions.append("circle1")
+    if point_in_square1(x, y):
+        regions.append("inside_square1")
+    if point_outside_square1(x, y):
+        regions.append("outside_square1")
+    if point_in_circle2(x, y):
+        regions.append("circle2")
+    if point_inside_square2(x, y):
+        regions.append("inside_square2")
+    if point_on_line_segment(x, y):
+        regions.append("on_line_segment")
+    if point_above_line(x, y):
+        regions.append("above_line")
+    if point_below_line(x, y):
+        regions.append("below_line")
+    
+    # 新增正方形上下左右區分
+    if point_above_square1(x, y):
+        regions.append("above_square1")
+    if point_below_square1(x, y):
+        regions.append("below_square1")
+    if point_left_of_square1(x, y):
+        regions.append("left_of_square1")
+    if point_right_of_square1(x, y):
+        regions.append("right_of_square1")
+    
+    if point_above_square2(x, y):
+        regions.append("above_square2")
+    if point_below_square2(x, y):
+        regions.append("below_square2")
+    if point_left_of_square2(x, y):
+        regions.append("left_of_square2")
+    if point_right_of_square2(x, y):
+        regions.append("right_of_square2")
+    
+    return regions
+
+# 根據區域屬性決定顏色
+def get_region_color(x, y):
+    regions = get_region(x, y)
+
+    # 只要點不在兩個圓內，則不進行顏色標註
+    if "circle1" not in regions and "circle2" not in regions:
+        return None  # 圓外區域不著色
+
+    # 第一個圓內且第二個圓內
+    if "circle1" in regions and "circle2" in regions:
+        return "#FF60AF"  # Purple
+
+    # 第一個圓內且在第一個正方形內部
+    if "circle1" in regions and "inside_square1" in regions:
+        if point_above_line(x, y):
+            return "#6F00D2"  # Green
+        elif point_below_line(x, y):
+            return "#E800E8"  # Yellow
+
+    # 第一個圓內且不在第一個正方形內部
+    if "circle1" in regions and "outside_square1" in regions:
+        if point_above_square1(x, y):
+            return "#00E3E3"  # Cyan
+        elif point_below_square1(x, y):
+            return "#0080FF"  # Magenta
+        elif point_left_of_square1(x, y):
+            return "#00DB00"  # Orange
+        elif point_right_of_square1(x, y):
+            return "#02DF82"  # Brown
+
+    # 第二個圓內且在第二個正方形內部
+    if "circle2" in regions and "inside_square2" in regions:
+        return "#FFA6FF"  # Red
+
+    # 第二個圓內但不在第二個正方形內部
+    if "circle2" in regions and "outside_square2" in regions:
+        if point_above_square2(x, y):
+            return "#BE77FF"  # Lightblue
+        elif point_below_square2(x, y):
+            return "#EA0000"  # Pink
+        elif point_left_of_square2(x, y):
+            return "#6F00D2"  # Lightgreen
+        elif point_right_of_square2(x, y):
+            return "#2828FF"  # Lightyellow
+
+    # 標註對角線位置
+    if "on_line_segment" in regions:
+        return "#FFDC35"  # Black
+    elif "above_line" in regions:
+        return "#46A3FF"  # Orange
+    elif "below_line" in regions:
+        return "#00A600"  # Pink
+
+    return None  # 沒有符合的區域，則不著色
+
+# 繪製掃描點並著色
+def scan_and_draw():
+    for y in range(0, canvas.height, 1):  # 每1個像素掃描一次
+        for x in range(0, canvas.width, 1):
+            color = get_region_color(x, y)
+            if color:
+                ctx.fillStyle = color
+                ctx.beginPath()
+                ctx.arc(x + 1, y + 1, 1, 0, 2 * 3.14)  # 用圓點標示
+                ctx.fill()
+
+# 開始掃描和標示
+scan_and_draw()
+</script><br />W14_hw << <a href='W14_hw.html'>Previous</a> <a href='HW2.html'>Next</a> >> HW2</div>
         
     <!-- footer -->
       <div class="container">
